@@ -1,30 +1,17 @@
 -- Print the largest prime factor of 600851475143
-main = do print (last (getPrimeFactors 600851475143))
+main :: IO()
+main = print (largestPrimeFactor 600851475143)
 
--- Get an infinite list of primes
-primes :: [Integer]
-primes = filter isPrime [1..]
+-- start factoring a number with the first prime (2)
+largestPrimeFactor :: Integer -> Integer
+largestPrimeFactor = largestPrimeFactorWorker 2
 
--- Determine if an integer is prime
-isPrime :: Integer -> Bool
-isPrime n | n < 2     = False
-          | n == 2    = True
-          | otherwise = not (hasPrimeFactor n primes)
-
--- Search for a prime factor of n
-hasPrimeFactor :: Integer -> [Integer] -> Bool
-hasPrimeFactor n []                      = False
-hasPrimeFactor n (p:ps) | n `mod` p == 0 = True
-                        | (p ^ 2) > n    = False
-                        | otherwise      = hasPrimeFactor n ps
-
--- Get all the prime factors of integer n
-getPrimeFactors :: Integer -> [Integer]
-getPrimeFactors n = getPrimeFactorsR n primes
-
--- Get all the prime factors of integer n given a list of primes to check
-getPrimeFactorsR :: Integer -> [Integer] -> [Integer]
-getPrimeFactorsR _ []                      = []
-getPrimeFactorsR n (p:ps) | p > n          = []
-                          | n `mod` p == 0 = p:(getPrimeFactorsR (quot n p) ps)
-                          | otherwise      = getPrimeFactorsR n ps
+-- find the largest prime factor of n, starting by trying to divide by f
+-- when f > sqrt(n), n must be prime
+-- when n `mod` f == 0, n is not prime and is divided by f
+-- otherwise n is not divisible by f, so increment f and continue factoring
+largestPrimeFactorWorker :: Integer -> Integer -> Integer
+largestPrimeFactorWorker f n
+  | f * f > n      = n
+  | n `mod` f == 0 = largestPrimeFactorWorker    f    (n `quot` f)
+  | otherwise      = largestPrimeFactorWorker (f + 1)      n
