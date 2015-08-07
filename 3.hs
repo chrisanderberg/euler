@@ -1,6 +1,6 @@
 -- Print the largest prime factor of 600851475143
 main :: IO()
-main = print (largestPrimeFactor 600851475143)
+main = print $ largestPrimeFactor 600851475143
 
 -- start factoring a number with the first prime (2)
 largestPrimeFactor :: Integer -> Integer
