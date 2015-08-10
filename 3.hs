@@ -1,10 +1,7 @@
 -- Print the largest prime factor of 600851475143
 main :: IO()
 main = print $ largestPrimeFactor 600851475143
-
--- start factoring a number with the first prime (2)
-largestPrimeFactor :: Integer -> Integer
-largestPrimeFactor = largestPrimeFactorWorker 2
+  where largestPrimeFactor = largestPrimeFactorWorker 2
 
 -- find the largest prime factor of n, starting by trying to divide by f
 -- when f > sqrt(n), n must be prime
