@@ -8,7 +8,6 @@ main = print $ largestPrimeFactor 600851475143
 -- when n `mod` f == 0, n is not prime and is divided by f
 -- otherwise n is not divisible by f, so increment f and continue factoring
 largestPrimeFactorWorker :: Integer -> Integer -> Integer
-largestPrimeFactorWorker f n
-  | f * f > n      = n
-  | n `mod` f == 0 = largestPrimeFactorWorker    f    (n `quot` f)
-  | otherwise      = largestPrimeFactorWorker (f + 1)      n
+largestPrimeFactorWorker f n | f * f > n      = n
+                             | n `mod` f == 0 = largestPrimeFactorWorker    f    (n `quot` f)
+                             | otherwise      = largestPrimeFactorWorker (f + 1)      n
