@@ -14,7 +14,7 @@ isPrime n | n < 2     = False
 
 -- Search for a prime factor of n
 hasPrimeFactor :: Integer -> [Integer] -> Bool
-hasPrimeFactor n []                      = False
+hasPrimeFactor _ []                      = False
 hasPrimeFactor n (p:ps) | n `mod` p == 0 = True
                         | (p ^ 2) > n    = False
                         | otherwise      = hasPrimeFactor n ps

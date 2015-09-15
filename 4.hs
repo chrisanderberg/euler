@@ -5,7 +5,7 @@ main = print $ maximum $ palindromes [100..999]
 -- get all palindromes produced by any combination of 2 numbers in the arg
 palindromes :: [Int] -> [Int]
 palindromes   []   = []
-palindromes (x:xs) = (filter isPalindrome $ map (\y -> x * y) xs) ++ palindromes xs
+palindromes (x:xs) = filter isPalindrome (map (\y -> x * y) xs) ++ palindromes xs
 
 -- given a number, return a list of its digits in reverse order
 -- digitize 184 => [4, 8, 1]
