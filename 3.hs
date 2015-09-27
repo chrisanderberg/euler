@@ -1,5 +1,5 @@
 -- Print the largest prime factor of 600851475143
-main :: IO()
+main :: IO ()
 main = print $ largestPrimeFactor 600851475143
   where largestPrimeFactor = largestPrimeFactorWorker 2
 

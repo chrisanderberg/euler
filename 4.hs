@@ -1,5 +1,5 @@
 -- print the largest palindromic number that is a product of two 3-digit numbers
-main :: IO()
+main :: IO ()
 main = print $ maximum $ palindromes [100..999]
 
 -- get all palindromes produced by any combination of 2 numbers in the arg

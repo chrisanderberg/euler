@@ -1,5 +1,5 @@
 -- What is the 10,001st prime number?
-main :: IO()
+main :: IO ()
 main = print $ primes !! 10000 -- use 10000 since index is 0 based
 
 -- Get an infinite list of primes
