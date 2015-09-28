@@ -8,6 +8,6 @@ primeFactors :: Integer -> [Integer]
 primeFactors n = primeFactors' n primes
 
 primeFactors' :: Integer -> [Integer] -> [Integer]
-primeFactors' n (p:ps) | p * p > n      = []
-                       | n `mod` p == 0 = p : primeFactors' n ps
+primeFactors' n (p:ps) | p > n          = []
+                       | n `mod` p == 0 = p : (primeFactors' (n `div` p) (p:ps))
                        | otherwise      = primeFactors' n ps
