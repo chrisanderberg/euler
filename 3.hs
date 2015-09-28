@@ -1,13 +1,13 @@
 -- Print the largest prime factor of 600851475143
-main :: IO ()
-main = print $ largestPrimeFactor 600851475143
-  where largestPrimeFactor = largestPrimeFactorWorker 2
+import Data.Numbers.Primes
 
--- find the largest prime factor of n, starting by trying to divide by f
--- when f > sqrt(n), n must be prime
--- when n `mod` f == 0, n is not prime and is divided by f
--- otherwise n is not divisible by f, so increment f and continue factoring
-largestPrimeFactorWorker :: Integer -> Integer -> Integer
-largestPrimeFactorWorker f n | f * f > n      = n
-                             | n `mod` f == 0 = largestPrimeFactorWorker    f    (n `quot` f)
-                             | otherwise      = largestPrimeFactorWorker (f + 1)      n
+main :: IO ()
+main = print $ head $ reverse $ primeFactors 600851475143
+
+primeFactors :: Integer -> [Integer]
+primeFactors n = primeFactors' n primes
+
+primeFactors' :: Integer -> [Integer] -> [Integer]
+primeFactors' n (p:ps) | p * p > n      = []
+                       | n `mod` p == 0 = p : primeFactors' n ps
+                       | otherwise      = primeFactors' n ps
