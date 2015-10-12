@@ -1,7 +1,10 @@
 *
-!Haskell/
+
 !**/.gitignore
 !**/*.md
+
+!Haskell/
+!Web/
 !**/*.hs
 !**/*.txt
 !**/*.html

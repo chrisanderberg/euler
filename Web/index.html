@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title id="title">Euler</title>
+</head>
+<body>
+  <h1 id="number">Problem Undefined</h1>
+  <h3 id="question">Question Undefined</h3>
+  <h3 id="answer">Unsolved</h3>
+  Repetitions: <input id="repetitions" type='number' value="1"></input>
+  <br/>
+  <button id="solve" onclick="solve()">solve</button>
+  <p id="total"></p>
+  <p id="average"></p>
+  <script>
+    var repetitions = 1
+    var repetition = 0
+    var hash = window.location.hash.substr(1)
+    var answer = undefined
+    var startTime = undefined
+    var endTime = undefined
+    document.getElementById('number').innerHTML = "Problem " + hash
+    var worker = new Worker(hash + '.js')
+    worker.onmessage = function(e) {
+      switch(e.data[0]) {
+        case 'question':
+          document.getElementById('question').innerHTML = e.data[1]
+          break
+        case 'answer':
+          answer = e.data[1]
+          repeat()
+          break
+        default:
+          throw('unknown message recieved from worker')
+          break
+      }
+    }
+    worker.postMessage('question')
+
+    function repeat() {
+      repetition++
+      if(repetition > repetitions) {
+        endTime = (new Date).getTime()
+        document.getElementById('answer').innerHTML = 'Answer: ' + answer
+        document.getElementById('total').innerHTML = 'total time: ' + (endTime - startTime) + ' ms'
+        document.getElementById('average').innerHTML = 'average time: ' + (endTime - startTime) / repetitions + ' ms'
+      } else {
+        worker.postMessage('answer')
+        document.getElementById('answer').innerHTML = repetition + ' / ' + repetitions
+      }
+    }
+
+    function solve() {
+      repetitions = document.getElementById('repetitions').value
+      repetition = 0
+      startTime = (new Date).getTime()
+      repeat()
+    }
+  </script>
+</body>
+</html>
