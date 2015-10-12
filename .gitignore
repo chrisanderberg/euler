@@ -1,5 +1,9 @@
 *
-!.gitignore
-!*.hs
-!*.txt
-!*.md
+!Haskell/
+!**/.gitignore
+!**/*.md
+!**/*.hs
+!**/*.txt
+!**/*.html
+!**/*.css
+!**/*.js
