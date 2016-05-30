@@ -20,7 +20,9 @@ var Main = function (_React$Component) {
   _createClass(Main, [{
     key: "render",
     value: function render() {
-      return React.createElement(Solution, { limit: 1000, factors: [3, 5] });
+      return React.createElement(Solution, { limit: parseInt(this.props.params[0]), factors: this.props.params.slice(1).map(function (x) {
+          return parseInt(x);
+        }) });
     }
   }]);
 
@@ -39,11 +41,11 @@ var Solution = function (_React$Component2) {
   _createClass(Solution, [{
     key: "render",
     value: function render() {
-      var factorHeaders = this.props.factors.map(function (factor) {
+      var factorHeaders = this.props.factors.map(function (factor, index) {
         return React.createElement(
           "th",
-          null,
-          "Divisible by ",
+          { key: index },
+          "Multiple of ",
           factor
         );
       });
@@ -63,26 +65,45 @@ var Solution = function (_React$Component2) {
       }
 
       return React.createElement(
-        "table",
-        { className: "solution", style: { width: "100%" } },
+        "div",
+        null,
         React.createElement(
-          "tr",
-          null,
+          "table",
+          { className: "solution", style: { width: "100%" } },
           React.createElement(
-            "th",
+            "thead",
             null,
-            "Number"
+            React.createElement(
+              "tr",
+              null,
+              React.createElement(
+                "th",
+                null,
+                "Number"
+              ),
+              React.createElement(
+                "th",
+                null,
+                "Cumulative Sum"
+              ),
+              factorHeaders
+            )
           ),
           React.createElement(
-            "th",
+            "tbody",
             null,
-            "New Sum"
-          ),
-          factorHeaders
+            subSolutions.map(function (subSolution) {
+              return React.createElement(SubSolution, { key: subSolution.num, num: subSolution.num, sum: subSolution.sum, divisibilities: subSolution.divisibilities, isDivisible: subSolution.isDivisible });
+            })
+          )
         ),
-        subSolutions.map(function (subSolution) {
-          return React.createElement(SubSolution, { num: subSolution.num, sum: subSolution.sum, divisibilities: subSolution.divisibilities, isDivisible: subSolution.isDivisible });
-        })
+        React.createElement(
+          "a",
+          { href: "#/" + (this.props.limit + 50) + this.props.factors.reduce(function (factors, factor) {
+              return factors + factor + '/';
+            }, '/') },
+          "Next 50"
+        )
       );
     }
   }]);
@@ -112,14 +133,14 @@ var SubSolution = function (_React$Component3) {
         ),
         React.createElement(
           "td",
-          { style: this.props.isDivisible ? { 'background-color': '#ffffff', 'color': '#008800' } : { 'background-color': '#aaaaaa', 'color': '#aa0000' } },
-          this.props.isDivisible ? this.props.sum : 'not divisible by any factor'
+          { style: this.props.isDivisible ? { 'backgroundColor': '#aaaaff', 'color': '#000088' } : {} },
+          this.props.sum
         ),
-        this.props.divisibilities.map(function (divisibility) {
+        this.props.divisibilities.map(function (divisibility, index) {
           return React.createElement(
             "td",
-            { style: { 'background-color': divisibility ? "#aaffaa" : "#ffaaaa" } },
-            divisibility ? "true" : "false"
+            { key: index, style: { 'backgroundColor': divisibility ? "#aaffaa" : "#ffaaaa" } },
+            divisibility ? "Yes" : "No"
           );
         })
       );
@@ -130,3 +151,4 @@ var SubSolution = function (_React$Component3) {
 }(React.Component);
 
 window.Main = Main;
+window.defaultParams = ['1000', '3', '5'];
