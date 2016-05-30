@@ -5,6 +5,7 @@
 
 !Haskell/
 !Web/
+!Web/*
 !**/*.hs
 !**/*.txt
 !**/*.html
