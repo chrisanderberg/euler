@@ -21,9 +21,9 @@ var Main = function (_React$Component) {
     key: "render",
     value: function render() {
       return React.createElement(
-        "div",
-        { className: "commentBox" },
-        "Hello, world!"
+        "p",
+        null,
+        "\"Hello, world!\""
       );
     }
   }]);

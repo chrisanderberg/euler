@@ -1,10 +1,6 @@
 class Main extends React.Component {
   render() {
-    return (
-      <div className="commentBox">
-        Hello, world!
-      </div>
-    );
+    return <p>"Hello, world!"</p>;
   }
 }
 
