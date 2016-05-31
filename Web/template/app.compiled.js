@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -18,12 +18,22 @@ var Main = function (_React$Component) {
   }
 
   _createClass(Main, [{
-    key: "render",
+    key: 'render',
     value: function render() {
-      return React.createElement(
-        "p",
+      return this.props.params.length > 0 ? React.createElement(
+        'div',
         null,
-        "\"Hello, world!\""
+        this.props.params.map(function (str) {
+          return React.createElement(
+            'div',
+            null,
+            str
+          );
+        })
+      ) : React.createElement(
+        'p',
+        { style: { 'color': 'red' } },
+        'Empty Parameters'
       );
     }
   }]);
@@ -32,3 +42,4 @@ var Main = function (_React$Component) {
 }(React.Component);
 
 window.Main = Main;
+window.defaultParams = [];
