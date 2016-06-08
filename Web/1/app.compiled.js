@@ -69,7 +69,7 @@ var Solution = function (_React$Component2) {
         null,
         React.createElement(
           "table",
-          { className: "solution", style: { width: "100%" } },
+          { className: "solution table table-striped table-bordered", style: { width: "100%" } },
           React.createElement(
             "thead",
             null,
@@ -102,7 +102,11 @@ var Solution = function (_React$Component2) {
           { href: "#/" + (this.props.limit + 50) + this.props.factors.reduce(function (factors, factor) {
               return factors + factor + '/';
             }, '/') },
-          "Next 50"
+          React.createElement(
+            "button",
+            { type: "button", className: "btn btn-primary" },
+            "Next 50"
+          )
         )
       );
     }
@@ -133,14 +137,18 @@ var SubSolution = function (_React$Component3) {
         ),
         React.createElement(
           "td",
-          { style: this.props.isDivisible ? { 'backgroundColor': '#aaaaff', 'color': '#000088' } : {} },
+          { className: this.props.isDivisible ? "text-info" : "" },
           this.props.sum
         ),
         this.props.divisibilities.map(function (divisibility, index) {
-          return React.createElement(
+          return divisibility ? React.createElement(
             "td",
-            { key: index, style: { 'backgroundColor': divisibility ? "#aaffaa" : "#ffaaaa" } },
-            divisibility ? "Yes" : "No"
+            { key: index, className: "text-success" },
+            "Yes"
+          ) : React.createElement(
+            "td",
+            { key: index },
+            "No"
           );
         })
       );

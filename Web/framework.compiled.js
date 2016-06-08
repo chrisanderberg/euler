@@ -40,9 +40,8 @@
     ReactDOM.render(React.createElement(Main, { params: getParams() }), document.getElementById('main'));
   }
 
-  // whenever the hash changes, the
+  // whenever the hash changes, render
   $(window).on('hashchange', function () {
-    // set the new parameters, triggering the "Main" component to re-render
     render();
   });
 

@@ -22,7 +22,7 @@ class Solution extends React.Component {
 
     return(
       <div>
-        <table className="solution" style={{width: "100%"}}>
+        <table className="solution table table-striped table-bordered" style={{width: "100%"}}>
           <thead>
             <tr>
               <th>Number</th>
@@ -36,7 +36,7 @@ class Solution extends React.Component {
             )}
           </tbody>
         </table>
-        <a href={"#/" + (this.props.limit + 50) + this.props.factors.reduce((factors, factor) => factors + factor + '/', '/')}>Next 50</a>
+        <a href={"#/" + (this.props.limit + 50) + this.props.factors.reduce((factors, factor) => factors + factor + '/', '/')}><button type="button" className="btn btn-primary">Next 50</button></a>
       </div>
     );
   }
@@ -47,8 +47,8 @@ class SubSolution extends React.Component {
     return(
       <tr>
         <td>{this.props.num}</td>
-        <td style={this.props.isDivisible ? {'backgroundColor': '#aaaaff', 'color':'#000088'} : {}}>{this.props.sum}</td>
-        {this.props.divisibilities.map((divisibility, index) => <td key={index} style={{'backgroundColor': divisibility ? "#aaffaa" : "#ffaaaa"}}>{divisibility ? "Yes" : "No"}</td>)}
+        <td className={this.props.isDivisible ? "text-info" : ""}>{this.props.sum}</td>
+        {this.props.divisibilities.map((divisibility, index) => divisibility ? <td key={index} className="text-success">Yes</td> : <td key={index}>No</td>)}
       </tr>
     );
   }
