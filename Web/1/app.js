@@ -55,4 +55,4 @@ class SubSolution extends React.Component {
 }
 
 window.Main = Main;
-window.defaultParams = ['1000', '3', '5'];
+window.defaultHash = "#/1000/3/5/";

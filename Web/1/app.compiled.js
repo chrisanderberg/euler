@@ -159,4 +159,4 @@ var SubSolution = function (_React$Component3) {
 }(React.Component);
 
 window.Main = Main;
-window.defaultParams = ['1000', '3', '5'];
+window.defaultHash = "#/1000/3/5/";
