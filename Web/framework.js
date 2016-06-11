@@ -66,16 +66,16 @@
   function enableDisableButtons() {
     // can't make any undos when viewing first item
     if(undoRedoStackIndex == 0) {
-      $('.ui-undo').addClass('disabled');
+      $('#undo').addClass('disabled');
     } else {
-      $('.ui-undo').removeClass('disabled');
+      $('#undo').removeClass('disabled');
     }
 
     // can't make any redos when viewing last item
     if(undoRedoStackIndex == undoRedoStack.length - 1) {
-      $('.ui-redo').addClass('disabled');
+      $('#redo').addClass('disabled');
     } else {
-      $('.ui-redo').removeClass('disabled');
+      $('#redo').removeClass('disabled');
     }
   }
 
@@ -102,8 +102,8 @@
     render();
   });
 
-  // handle clicks on the undo button
-  $('.ui-undo').on('click', function(e) {
+  // handle undo
+  function undo() {
     // only undo if the stack allows
     if(undoRedoStackIndex != 0) {
       console.log('undo');
@@ -115,13 +115,10 @@
       // update the enabled/disabled status of the undo/redo buttons
       enableDisableButtons();
     }
+  }
 
-    // prevent adding a '?' causing empty query params by returning false
-    return false;
-  });
-
-  // handle clicks on the redo button
-  $('.ui-redo').on('click', function(e) {
+  // handle redo
+  function redo() {
     // only redo if the stack allows
     if(undoRedoStackIndex != undoRedoStack.length - 1) {
       console.log('redo');
@@ -133,19 +130,57 @@
       // update the enabled/disabled status of the undo/redo buttons
       enableDisableButtons();
     }
+  }
+
+  // handle clicks on the undo button
+  $('#undo').on('click', function(e) {
+    undo();
+
+    // prevent adding a '?' causing empty query params by returning false
+    return false;
+  });
+
+  // handle clicks on the redo button
+  $('#redo').on('click', function(e) {
+    redo();
 
     // prevent adding a '?' causing empty query params by returning false
     return false;
   });
 
   // handle clicks on the reset button
-  $('.ui-reset').on('click', function(e) {
+  $('#reset').on('click', function(e) {
     console.log('reset');
     // set the url hash to the default value
     window.location.hash = window.defaultHash;
 
     // prevent adding a '?' causing empty query params by returning false
     return false;
+  });
+
+  $(document).ready(function() {
+    let totalPresses = 0;
+
+  	// check for keys on keyup event
+  	$(document).keyup(function(e) {
+  		if(e.which == 17 || e.which == 92 || e.which == 91 || e.which == 93) {
+  			totalPresses -= 1;
+  		}
+  	});
+
+  	// check for keys on keydown event
+  	$(document).keydown(function(e) {
+  		if(e.which == 17 || e.which == 92 || e.which == 91 || e.which == 93) {
+  			totalPresses += 1;
+  		}
+  		if(e.which == 90 && totalPresses > 0) {
+  			undo();
+  		}
+      if(e.which == 89 && totalPresses > 0) {
+  			redo();
+  		}
+  	});
+
   });
 
   // on page load, render the "Main" component
