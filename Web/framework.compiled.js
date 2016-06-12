@@ -45,7 +45,15 @@
   // render the "Main" component, which is the root component for all other components
   function render() {
     console.log('render');
-    ReactDOM.render(React.createElement(Main, { params: getParams() }), document.getElementById('main'));
+    for (var elementId in window.components) {
+      console.log(elementId);
+      var params = getParams();
+      console.log(params);
+      var Component = window.components[elementId];
+      console.log(Component);
+
+      ReactDOM.render(React.createElement(Component, { params: params }), document.getElementById(elementId));
+    }
   }
 
   // set the default hash and default parameters, preferring to use the hash if available

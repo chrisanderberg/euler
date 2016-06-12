@@ -20,18 +20,18 @@
           </form>
         </div>
         <ul class="nav navbar-nav nav-pills">
-          <li class="active"><a data-toggle="pill" href="#app">App</a></li>
-          <li><a data-toggle="pill" href="#about">About</a></li>
+          <li class="active"><a data-toggle="pill" href="#problem-tab">Problem</a></li>
+          <li><a data-toggle="pill" href="#solution-tab">Solution</a></li>
         </ul>
       </div>
     </nav>
 
     <div class="tab-content">
-      <div id="app" class="tab-pane in active">
-        <div id="main">loading</div>
+      <div id="problem-tab" class="tab-pane in active">
+        <div id="problem">loading</div>
       </div>
-      <div id="about" class="tab-pane">
-        This is the about section
+      <div id="solution-tab" class="tab-pane">
+        <div id="solution">loading</div>
       </div>
     </div>
 
@@ -40,6 +40,10 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+      window.components = {};
+    </script>
 
     <script type="text/babel" src="app.js"></script>
     <script type="text/babel" src="/framework.js"></script>

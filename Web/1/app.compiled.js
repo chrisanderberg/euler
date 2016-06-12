@@ -8,29 +8,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Main = function (_React$Component) {
-  _inherits(Main, _React$Component);
-
-  function Main() {
-    _classCallCheck(this, Main);
-
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(Main).apply(this, arguments));
-  }
-
-  _createClass(Main, [{
-    key: "render",
-    value: function render() {
-      return React.createElement(Solution, { limit: parseInt(this.props.params[0]), factors: this.props.params.slice(1).map(function (x) {
-          return parseInt(x);
-        }) });
-    }
-  }]);
-
-  return Main;
-}(React.Component);
-
-var Solution = function (_React$Component2) {
-  _inherits(Solution, _React$Component2);
+var Solution = function (_React$Component) {
+  _inherits(Solution, _React$Component);
 
   function Solution() {
     _classCallCheck(this, Solution);
@@ -41,7 +20,11 @@ var Solution = function (_React$Component2) {
   _createClass(Solution, [{
     key: "render",
     value: function render() {
-      var factorHeaders = this.props.factors.map(function (factor, index) {
+      var limit = parseInt(this.props.params[0]);
+      var factors = this.props.params.slice(1).map(function (x) {
+        return parseInt(x);
+      });
+      var factorHeaders = factors.map(function (factor, index) {
         return React.createElement(
           "th",
           { key: index },
@@ -49,12 +32,11 @@ var Solution = function (_React$Component2) {
           factor
         );
       });
-
       var subSolutions = [];
 
       var sum = 0;
-      for (var i = 1; i < this.props.limit; i++) {
-        var divisibilities = this.props.factors.map(function (factor) {
+      for (var i = 1; i < limit; i++) {
+        var divisibilities = factors.map(function (factor) {
           return i % factor == 0;
         });
         var isDivisible = divisibilities.reduce(function (prev, cur, index, arr) {
@@ -99,8 +81,8 @@ var Solution = function (_React$Component2) {
         ),
         React.createElement(
           "a",
-          { href: "#/" + (this.props.limit + 50) + this.props.factors.reduce(function (factors, factor) {
-              return factors + factor + '/';
+          { href: "#/" + (limit + 50) + factors.reduce(function (factorsUrl, factor) {
+              return factorsUrl + factor + '/';
             }, '/') },
           React.createElement(
             "button",
@@ -115,8 +97,8 @@ var Solution = function (_React$Component2) {
   return Solution;
 }(React.Component);
 
-var SubSolution = function (_React$Component3) {
-  _inherits(SubSolution, _React$Component3);
+var SubSolution = function (_React$Component2) {
+  _inherits(SubSolution, _React$Component2);
 
   function SubSolution() {
     _classCallCheck(this, SubSolution);
@@ -158,5 +140,29 @@ var SubSolution = function (_React$Component3) {
   return SubSolution;
 }(React.Component);
 
-window.Main = Main;
+var Problem = function (_React$Component3) {
+  _inherits(Problem, _React$Component3);
+
+  function Problem() {
+    _classCallCheck(this, Problem);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(Problem).apply(this, arguments));
+  }
+
+  _createClass(Problem, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "div",
+        null,
+        "This is the problem 1 problem."
+      );
+    }
+  }]);
+
+  return Problem;
+}(React.Component);
+
+window.components.problem = Problem;
+window.components.solution = Solution;
 window.defaultHash = "#/1000/3/5/";
