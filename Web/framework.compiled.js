@@ -46,11 +46,8 @@
   function render() {
     console.log('render');
     for (var elementId in window.components) {
-      console.log(elementId);
       var params = getParams();
-      console.log(params);
       var Component = window.components[elementId];
-      console.log(Component);
 
       ReactDOM.render(React.createElement(Component, { params: params }), document.getElementById(elementId));
     }
