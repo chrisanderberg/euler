@@ -2,12 +2,13 @@
 
 !**/.gitignore
 !**/*.md
+!**/*.txt
 
 !Haskell/
+!JavaScript/
 !Web/
 !Web/*
-!**/*.hs
-!**/*.txt
-!**/*.html
-!**/*.css
-!**/*.js
+!Haskell/*.hs
+!JavaScript/*.js
+!JavaScript/package.json
+!JavaScript/.babelrc
