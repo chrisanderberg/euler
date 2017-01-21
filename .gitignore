@@ -6,8 +6,6 @@
 
 !Haskell/
 !JavaScript/
-!Web/
-!Web/*
 !Haskell/*.hs
 !JavaScript/*.js
 !JavaScript/package.json
