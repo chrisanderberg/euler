@@ -1,12 +1,15 @@
 *
 
+!Haskell/
+!JavaScript/
+!Python/
+
 !**/.gitignore
 !**/*.md
 !**/*.txt
 
-!Haskell/
-!JavaScript/
 !Haskell/*.hs
 !JavaScript/*.js
 !JavaScript/package.json
 !JavaScript/.babelrc
+!Python/*.py
