@@ -3,6 +3,7 @@
 !Haskell/
 !JavaScript/
 !Python/
+!Julia/
 
 !**/.gitignore
 !**/*.md
@@ -11,3 +12,4 @@
 !Haskell/*.hs
 !JavaScript/*.js
 !Python/*.py
+!Julia/*.jl
