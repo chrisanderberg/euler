@@ -4,6 +4,7 @@
 !JavaScript/
 !Python/
 !Julia/
+!Rust/
 
 !**/.gitignore
 !**/*.md
@@ -13,3 +14,4 @@
 !JavaScript/*.js
 !Python/*.py
 !Julia/*.jl
+!Rust/*.rs
