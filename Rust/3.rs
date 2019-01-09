@@ -1,15 +1,31 @@
-fn is_prime(primes: &Vec<u64>, num: u64) -> bool {
+use std::fmt;
+
+struct InsufficientPrimeList;
+
+impl fmt::Display for InsufficientPrimeList {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "Prime list not large enough to check if number is prime")
+    }
+}
+
+impl fmt::Debug for InsufficientPrimeList {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "Prime list not large enough to check if number is prime")
+    }
+}
+
+fn is_prime(primes: &Vec<u64>, num: u64) -> Result<bool, InsufficientPrimeList> {
     for prime in primes.iter() {
         if num % prime == 0 {
-            return false;
+            return Ok(false);
         }
 
         if num < prime * prime {
-            return true;
+            return Ok(true);
         }
     }
 
-    true
+    Err(InsufficientPrimeList {})
 }
 
 fn find_next_prime(primes: &mut Vec<u64>) -> u64 {
@@ -18,7 +34,7 @@ fn find_next_prime(primes: &mut Vec<u64>) -> u64 {
         None => 2,
     };
 
-    while !is_prime(primes, potential_prime) {
+    while !is_prime(primes, potential_prime).unwrap() {
         potential_prime += 1;
     }
 
@@ -27,20 +43,30 @@ fn find_next_prime(primes: &mut Vec<u64>) -> u64 {
     potential_prime
 }
 
-fn main() {
+fn prime_factor(composite: u64) -> Vec<(u64, u64)> {
+    let mut composite = composite;
     let mut primes: Vec<u64> = vec![2];
-    let mut composite: u64 = 600851475143;
-    let mut largest_prime = 2;
     let mut cur_prime = 2;
+    let mut prime_factors: Vec<(u64, u64)> = vec![];
 
     while cur_prime <= composite {
+        let mut count: u64 = 0;
+
         while composite % cur_prime == 0 {
             composite /= cur_prime;
-            largest_prime = cur_prime;
+            count += 1;
+        }
+
+        if count > 0 {
+            prime_factors.push((cur_prime, count));
         }
 
         cur_prime = find_next_prime(&mut primes);
     }
 
-    println!("{}", largest_prime);
+    prime_factors
+}
+
+fn main() {
+    println!("{}", prime_factor(600851475143).last().unwrap().0);
 }
