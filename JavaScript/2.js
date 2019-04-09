@@ -12,21 +12,21 @@ find the sum of the even-valued terms.
 
 // initialize variables
 let sum = 0;
-let fibA = 1;
-let fibB = 2;
+let smallFib = 1;
+let largeFib = 2;
 
-// loop until reached a Fibonacci number that exceeds 4,000,000
-while(fibB <= 4000000) {
+// loop until a Fibonacci number that exceeds 4,000,000 is reached
+while (largeFib <= 4000000) {
   // if the Fibonacci number is even, add it to the sum
-  if(fibB % 2 == 0) {
-    sum += fibB;
+  if (largeFib % 2 === 0) {
+    sum += largeFib;
   }
 
   // get next Fibonacci number
-  let old = fibA;
-  fibA = fibB;
-  fibB += old;
+  const newFib = smallFib + largeFib;
+  smallFib = largeFib;
+  largeFib = newFib;
 }
 
-// output result
+// print result
 console.log(sum);
