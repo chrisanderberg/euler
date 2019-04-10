@@ -1,17 +1,15 @@
-*
+haskell/*
+javascript/*
+python/*
+julia/*
+rust/*
 
-!Haskell/
-!JavaScript/
-!Python/
-!Julia/
-!Rust/
+!haskell/*.hs
+!javascript/*.js
+!python/*.py
+!julia/*.jl
+!rust/*.rs
 
 !**/.gitignore
 !**/*.md
 !**/*.txt
-
-!Haskell/*.hs
-!JavaScript/*.js
-!Python/*.py
-!Julia/*.jl
-!Rust/*.rs
