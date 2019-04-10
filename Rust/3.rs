@@ -50,15 +50,15 @@ fn prime_factor(composite: u64) -> Vec<(u64, u64)> {
     let mut prime_factors: Vec<(u64, u64)> = vec![];
 
     while cur_prime <= composite {
-        let mut count: u64 = 0;
+        let mut power: u64 = 0;
 
         while composite % cur_prime == 0 {
             composite /= cur_prime;
-            count += 1;
+            power += 1;
         }
 
-        if count > 0 {
-            prime_factors.push((cur_prime, count));
+        if power > 0 {
+            prime_factors.push((cur_prime, power));
         }
 
         cur_prime = find_next_prime(&mut primes);
