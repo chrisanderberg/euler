@@ -11,14 +11,14 @@ What is the largest prime factor of the number 600851475143 ?
 function nextPrime(primes) {
   // If the array of primes is empty, the first prime is 2.
   // Add it to the array and return it.
-  if(primes.length == 0) {
+  if (primes.length === 0) {
     primes.push(2);
     return 2;
   }
 
   // If the array includes just one prime (should be two),
   // the second prime is 3. Add it to the array and return it.
-  if(primes.length == 1 ) {
+  if (primes.length === 1 ) {
     primes.push(3);
     return 3;
   }
@@ -29,24 +29,24 @@ function nextPrime(primes) {
 
   // Once a new prime (the next one after the last prime given in the primes array)
   // is found, store it in this variable.
-  let newPrime = undefined;
+  let newPrime = 0;
 
   // While a new prime has not been found...
-  while(!newPrime) {
+  while (!newPrime) {
     // For each prime in the primes array starting at the beginning...
-    for(let i = 0; i < primes.length; i++) {
+    for (let i = 0; i < primes.length; i++) {
       let prime = primes[i];
 
       // If the prime is too big to be a factor of the prime candidate,
       // then a new prime has been found.
-      if(prime * prime > nextPrimeCandidate) {
+      if (prime * prime > nextPrimeCandidate) {
         newPrime = nextPrimeCandidate;
         break;
       }
 
       // If the prime is a factor of the prime candidate, then the prime
       // candidate can't be prime. Time to move on to the next number.
-      else if (nextPrimeCandidate % prime == 0) {
+      else if (nextPrimeCandidate % prime === 0) {
         break;
       }
     }
@@ -69,13 +69,13 @@ let primes = [];
 // find n's largest prime factor.
 function largestPrimeFactor(n, prime) {
   // n == 1 is the base case. We have an answer. Return the prime.
-  if(n == 1) {
+  if (n === 1) {
     return prime;
   }
 
   // If the prime is a factor of n, we can redefine the problem as finding
   // the largest prime factor of n / prime.
-  else if(n % prime == 0) {
+  else if (n % prime === 0) {
     return largestPrimeFactor(n / prime, prime);
   }
 

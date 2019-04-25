@@ -11,26 +11,28 @@ Find the largest palindrome made from the product of two 3-digit numbers.
 // convert a number into an array of digits
 function digitize(num) {
   let digits = [];
-  while(num > 0) {
+
+  while (num > 0) {
     digits.push(num % 10);
     num = Math.floor(num / 10);
   }
+
   return digits;
 }
 
 // determine if a number is a palendrome
 function isPalendrome(num) {
   // digitize the number
-  let digits = digitize(num);
+  const digits = digitize(num);
 
   // get the digits in reverse
-  let reversed = digits.slice();
-  reversed.reverse();
+  const reversed = digits.slice().reverse();
 
   // compare the digits with the reversed digits
   let result = true;
-  for(let i = 0; i < digits.length && result; i++) {
-    result = digits[i] == reversed[i];
+
+  for (let i = 0; i < digits.length && result; i++) {
+    result = (digits[i] === reversed[i]);
   }
 
   return result;
@@ -43,16 +45,16 @@ function largestPalendrome() {
   let largest = 0;
 
   // for each 3 digit number
-  for(let i = 999; i > 99; i--) {
+  for (let i = 999; i > 99; i--) {
 
     // for every other 3 digit number that produces
     // a product with the first 3 digit number that's
     // larger than the largest palendrome found
-    for(let j = 999; j > 99 && i * j > largest; j--) {
+    for (let j = 999; j > 99 && i * j > largest; j--) {
 
       // check if the product is a palendrome,
       // if so it's the new largest palendrome found
-      if(isPalendrome(i * j)) {
+      if (isPalendrome(i * j)) {
         largest = i * j;
       }
     }
