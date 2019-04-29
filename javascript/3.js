@@ -18,7 +18,7 @@ function nextPrime(primes) {
 
   // If the array includes just one prime (should be two),
   // the second prime is 3. Add it to the array and return it.
-  if (primes.length === 1 ) {
+  if (primes.length === 1) {
     primes.push(3);
     return 3;
   }

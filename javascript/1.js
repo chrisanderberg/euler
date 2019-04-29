@@ -9,7 +9,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 
 // create an array of numbers 0 to 999,
 // excluding 1000 because 1000 is not "below" 1000.
-const nums = [...Array(1000).keys()];
+const nums = Array.from(new Array(1000), (_, i) => i);
 
 // return true if a number is divisible by 3 or 5
 const multipleOfThreeOrFive = n => (n % 3 === 0) || (n % 5 === 0);
@@ -17,6 +17,4 @@ const multipleOfThreeOrFive = n => (n % 3 === 0) || (n % 5 === 0);
 // function for finding the sum of 2 numbers
 const sum = (a, b) => a + b;
 
-console.log(
-  nums.filter(multipleOfThreeOrFive)
-  .reduce(sum));
+console.log(nums.filter(multipleOfThreeOrFive).reduce(sum));
