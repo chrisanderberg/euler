@@ -16,7 +16,7 @@ first one hundred natural numbers and the square of the sum.
 // define "square", "sum", and "first100Nats"
 const square = x => x * x;
 const sum = (a, b) => a + b;
-const first100Nats = Array.from(new Array(100), (_, i) => i + 1);
+const first100Nats = Array.from({length: 100}, (_, i) => i + 1);
 
 // do the math
 const sumOfSquares = first100Nats.map(square).reduce(sum);

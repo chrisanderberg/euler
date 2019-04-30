@@ -29,5 +29,5 @@ function lcm(a, b) {
 }
 
 // Solve the problem
-const oneToTwenty = Array.from(new Array(20), (_, i) => i + 1);
+const oneToTwenty = Array.from({length: 20}, (_, i) => i + 1);
 console.log(oneToTwenty.reduce(lcm));
