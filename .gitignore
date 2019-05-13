@@ -5,12 +5,13 @@ julia/*
 python/*
 rust/*
 
-!c/**.c
-!haskell/**.hs
-!javascript/**.js
-!julia/**.jl
-!python/**.py
-!rust/**.rs
+!c/*.c
+!haskell/*.hs
+!javascript/*.js
+!javascript/lib/*.js
+!julia/*.jl
+!python/*.py
+!rust/*.rs
 
 !**/.gitignore
 !**/*.md
