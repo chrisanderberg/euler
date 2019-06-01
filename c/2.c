@@ -14,7 +14,7 @@ do not exceed four million, find the sum of the even-valued terms.
 
 int main()
 {
-    unsigned long sum = 0, prev = 0, cur = 1, next;
+    unsigned sum = 0, prev = 0, cur = 1, next;
 
     /* until the current Fibonacci number is greater than 4,000,000 */
     while (cur <= 4000000)
