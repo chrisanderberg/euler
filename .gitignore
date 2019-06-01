@@ -1,0 +1,9 @@
+.vscode/
+
+c/*
+!c/*.c
+!c/*.md
+
+rust/*
+!rust/*.rs
+!rust/*.md
