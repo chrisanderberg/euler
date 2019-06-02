@@ -5,7 +5,7 @@ Iterable<int> primeNumberSieve() sync* {
     // If the list of primes is empty, the first prime is 2.
     // Add it to the list and return it.
     if (savedPrimes.length == 0) {
-      savedPrimes..add(2);
+      savedPrimes.add(2);
       return 2;
     }
 
@@ -27,8 +27,7 @@ Iterable<int> primeNumberSieve() sync* {
     // While a new prime has not been found...
     while (newPrime == null) {
       // For each prime in the primes list starting at the beginning...
-      for (var i = 0; i < savedPrimes.length; i++) {
-        var prime = savedPrimes[i];
+      for (var prime in savedPrimes) {
 
         // If the prime is too big to be a factor of the prime candidate,
         // then a new prime has been found.
