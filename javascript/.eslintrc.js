@@ -16,6 +16,7 @@ module.exports = {
     "comma-spacing": ["error", {"before": false, "after": true}],
     "space-before-blocks": ["error", "always"],
     "object-curly-spacing": "error",
+    "multiline-comment-style": "error",
     "space-in-parens": "error",
     "no-empty": "warn",
     "no-unused-vars": "warn",
