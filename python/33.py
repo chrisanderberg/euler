@@ -33,7 +33,7 @@ class Fract:
 
 curiousFractions = []
 for num in range(10, 99):
-    for den in range(num+1, 100):
+    for den in range(num + 1, 100):
         f = Fract(num, den)
         if f.isCurious():
             curiousFractions.append(f)

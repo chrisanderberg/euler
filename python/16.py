@@ -9,4 +9,4 @@ def digitize(n):
     return digits
 
 
-print(sum(digitize(2**1000)))
+print(sum(digitize(2 ** 1000)))

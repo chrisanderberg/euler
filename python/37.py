@@ -25,10 +25,10 @@ class Primes:
     def isPrime(n):
         if n < 2:
             return False
-        lastPrime = Primes.primes[len(Primes.primes)-1]
+        lastPrime = Primes.primes[len(Primes.primes) - 1]
         while lastPrime * lastPrime <= n:
             Primes.appendNextPrime()
-            lastPrime = Primes.primes[len(Primes.primes)-1]
+            lastPrime = Primes.primes[len(Primes.primes) - 1]
 
         i = 0
         curPrime = Primes.primes[i]
@@ -43,7 +43,7 @@ class Primes:
     @staticmethod
     def appendNextPrime():
         size = len(Primes.primes)
-        n = Primes.primes[size-1] + 2
+        n = Primes.primes[size - 1] + 2
         while not Primes.isPrime(n):
             n += 2
         Primes.primes.append(n)
@@ -84,7 +84,7 @@ def isRightTruncatable(p):
         return True
     if Primes.isPrime(p):
         digits = digitize(p)
-        return isRightTruncatable(digitsToNum(digits[:len(digits)-1]))
+        return isRightTruncatable(digitsToNum(digits[:len(digits) - 1]))
     return False
 
 

@@ -14,7 +14,7 @@ class Lattice:
                 return 1
             else:
                 Lattice.paths[(rows, cols)] = Lattice.countPaths(
-                    rows-1, cols) + Lattice.countPaths(rows, cols-1)
+                    rows - 1, cols) + Lattice.countPaths(rows, cols - 1)
                 return Lattice.paths[(rows, cols)]
 
 

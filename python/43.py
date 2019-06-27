@@ -18,7 +18,7 @@ def permutator(determinedSymbols, remainingSymbols):
         for i in range(0, len(remainingSymbols)):
             symbol = remainingSymbols[i]
             permutator(determinedSymbols +
-                       [symbol], remainingSymbols[:i] + remainingSymbols[i+1:])
+                       [symbol], remainingSymbols[:i] + remainingSymbols[i + 1:])
     else:
         s1 = digitsToNum(determinedSymbols[1:4])
         s2 = digitsToNum(determinedSymbols[2:5])

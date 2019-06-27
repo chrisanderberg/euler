@@ -6,10 +6,10 @@ class Primes:
 
     @staticmethod
     def isPrime(n):
-        lastPrime = Primes.primes[len(Primes.primes)-1]
+        lastPrime = Primes.primes[len(Primes.primes) - 1]
         while lastPrime * lastPrime <= n:
             Primes.appendNextPrime()
-            lastPrime = Primes.primes[len(Primes.primes)-1]
+            lastPrime = Primes.primes[len(Primes.primes) - 1]
 
         i = 0
         curPrime = Primes.primes[i]
@@ -24,7 +24,7 @@ class Primes:
     @staticmethod
     def appendNextPrime():
         size = len(Primes.primes)
-        n = Primes.primes[size-1] + 2
+        n = Primes.primes[size - 1] + 2
         while not Primes.isPrime(n):
             n += 2
         Primes.primes.append(n)
@@ -80,8 +80,8 @@ def isAbundant(n):
 def isSumOfAbundants(abundants, n):
     result = False
     if n >= 24:
-        for i in range(0, n//2 + 1):
-            result = abundants[i] and abundants[n-i]
+        for i in range(0, (n // 2) + 1):
+            result = abundants[i] and abundants[n - i]
             if result:
                 break
     return result

@@ -20,7 +20,7 @@ palindrome = 0
 for a in range(100, 1000):
     for b in range(a, 1000):
         if a * b > palindrome:
-            if isPalindrome(a*b):
-                palindrome = a*b
+            if isPalindrome(a * b):
+                palindrome = a * b
 
 print(palindrome)

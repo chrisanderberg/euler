@@ -21,7 +21,8 @@ def isCurious(n):
 s = 0
 for i in range(3, 10000000):
     if i % 500000 == 0:
-        print(str(i//100000) + '%')
+        pass
+        # print(str(i // 100000) + '%')
     if isCurious(i):
         s += i
 print(s)

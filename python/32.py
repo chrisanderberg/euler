@@ -14,15 +14,15 @@ def digitsToNum(digits):
 
 
 def splitter(determinedSymbols):
-    for multiplicandLength in range(1, len(determinedSymbols)-1):
-        for multiplierLength in range(1, len(determinedSymbols)-multiplicandLength):
+    for multiplicandLength in range(1, len(determinedSymbols) - 1):
+        for multiplierLength in range(1, len(determinedSymbols) - multiplicandLength):
             productLength = len(determinedSymbols) - \
                 multiplicandLength - multiplierLength
             multiplicand = digitsToNum(determinedSymbols[:multiplicandLength])
             multiplier = digitsToNum(
                 determinedSymbols[multiplicandLength:multiplicandLength+multiplierLength])
             product = digitsToNum(
-                determinedSymbols[multiplicandLength+multiplierLength:])
+                determinedSymbols[multiplicandLength + multiplierLength:])
 
             if multiplicand * multiplier == product:
                 if product not in Products.products:
@@ -34,7 +34,7 @@ def permutator(determinedSymbols, remainingSymbols):
         for i in range(0, len(remainingSymbols)):
             symbol = remainingSymbols[i]
             permutator(determinedSymbols +
-                       [symbol], remainingSymbols[:i] + remainingSymbols[i+1:])
+                       [symbol], remainingSymbols[:i] + remainingSymbols[i + 1:])
     else:
         splitter(determinedSymbols)
 

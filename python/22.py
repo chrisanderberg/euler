@@ -61,6 +61,6 @@ names = fileNamesToList('names.txt')
 names.sort()
 s = 0
 for i in range(0, len(names)):
-    s += names[i].alphabeticalValue() * (i+1)
+    s += names[i].alphabeticalValue() * (i + 1)
 
 print(s)

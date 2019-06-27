@@ -38,37 +38,37 @@ class Grid:
 
         # check horizontal products
         for row in range(0, self.numRows):
-            for col in range(0, self.numCols-size):
+            for col in range(0, self.numCols - size):
                 product = 1
                 for i in range(0, size):
-                    product *= self.getNum(row, col+i)
+                    product *= self.getNum(row, col + i)
                 if product > maxProduct:
                     maxProduct = product
 
         # check vertical products
-        for row in range(0, self.numRows-size):
+        for row in range(0, self.numRows - size):
             for col in range(0, self.numCols):
                 product = 1
                 for i in range(0, size):
-                    product *= self.getNum(row+i, col)
+                    product *= self.getNum(row + i, col)
                 if product > maxProduct:
                     maxProduct = product
 
         # check downward diagonal products
-        for row in range(0, self.numRows-size):
-            for col in range(0, self.numCols-size):
+        for row in range(0, self.numRows - size):
+            for col in range(0, self.numCols - size):
                 product = 1
                 for i in range(0, size):
-                    product *= self.getNum(row+i, col+i)
+                    product *= self.getNum(row + i, col + i)
                 if product > maxProduct:
                     maxProduct = product
 
         # check upward diagonal products
-        for row in range(size-1, self.numRows):
-            for col in range(0, self.numCols-size):
+        for row in range(size - 1, self.numRows):
+            for col in range(0, self.numCols - size):
                 product = 1
                 for i in range(0, size):
-                    product *= self.getNum(row-i, col+i)
+                    product *= self.getNum(row - i, col + i)
                 if product > maxProduct:
                     maxProduct = product
 

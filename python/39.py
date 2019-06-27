@@ -2,7 +2,7 @@
 
 
 def isRight(a, b, c):
-    return a*a + b*b == c*c
+    return (a * a) + (b * b) == (c * c)
 
 
 def countRightTriangles(perimeter):

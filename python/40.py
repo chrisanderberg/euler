@@ -18,7 +18,7 @@ class Champernowne:
     def getDigit(i):
         while len(Champernowne.fractionalPart) < i:
             Champernowne.appendNextInt()
-        return Champernowne.fractionalPart[i-1]
+        return Champernowne.fractionalPart[i - 1]
 
     @staticmethod
     def appendNextInt():

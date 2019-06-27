@@ -15,7 +15,7 @@ def isPrime(primes, n):
 
 def appendNextPrime(primes):
     size = len(primes)
-    n = primes[size-1] + 2
+    n = primes[size - 1] + 2
     while not isPrime(primes, n):
         n += 1
     primes.append(n)

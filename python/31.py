@@ -16,7 +16,7 @@ class Coins:
             else:
                 combs = 0
                 while amount >= 0:
-                    combs += Coins.combinations(amount, i-1)
+                    combs += Coins.combinations(amount, i - 1)
                     amount -= Coins.values[i]
                 Coins.calculatedCombinations[i][amount] = combs
                 return combs

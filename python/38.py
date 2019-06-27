@@ -24,8 +24,8 @@ def digitsToNum(digits):
 
 def calcNum(i, n):
     digits = []
-    for j in range(1, n+1):
-        digits = digits + digitize(i*j)
+    for j in range(1, n + 1):
+        digits = digits + digitize(i * j)
     return digitsToNum(digits)
 
 
@@ -65,7 +65,7 @@ def permutator(determinedSymbols, remainingSymbols):
                 return
             symbol = remainingSymbols[i]
             permutator(determinedSymbols +
-                       [symbol], remainingSymbols[:i] + remainingSymbols[i+1:])
+                       [symbol], remainingSymbols[:i] + remainingSymbols[i + 1:])
     else:
         num = digitsToNum(determinedSymbols)
         if checkNum(num):
