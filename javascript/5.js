@@ -27,7 +27,7 @@ function gcd(a, b) {
  * Both arguments must be integers greater than 0.
  */
 function lcm(a, b) {
-  return a * b / gcd(a, b);
+  return (a * b) / gcd(a, b);
 }
 
 // Solve the problem
