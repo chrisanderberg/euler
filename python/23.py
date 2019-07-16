@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 
 class Primes:
@@ -7,6 +7,7 @@ class Primes:
     @staticmethod
     def isPrime(n):
         lastPrime = Primes.primes[len(Primes.primes) - 1]
+
         while lastPrime * lastPrime <= n:
             Primes.appendNextPrime()
             lastPrime = Primes.primes[len(Primes.primes) - 1]
@@ -14,6 +15,7 @@ class Primes:
         i = 0
         curPrime = Primes.primes[i]
         isPrime = True
+
         while isPrime and curPrime * curPrime <= n:
             isPrime = n % curPrime != 0
             i += 1
@@ -25,8 +27,10 @@ class Primes:
     def appendNextPrime():
         size = len(Primes.primes)
         n = Primes.primes[size - 1] + 2
+
         while not Primes.isPrime(n):
             n += 2
+
         Primes.primes.append(n)
 
     @staticmethod
@@ -40,12 +44,15 @@ class Primes:
     def primeFactor(n):
         exponents = []
         i = 0
+
         while n > 1:
             prime = Primes.getPrime(i)
             exponent = 0
+
             while n % prime == 0:
                 exponent += 1
                 n //= prime
+
             exponents.append(exponent)
             i += 1
 
@@ -55,13 +62,17 @@ class Primes:
 def properDivisors(n):
     exponents = Primes.primeFactor(n)
     divisors = [1]
+
     for i in range(0, len(exponents)):
         prime = Primes.getPrime(i)
         newDivisors = []
+
         for exponent in range(1, exponents[i] + 1):
             multiple = prime ** exponent
+
             for divisor in divisors:
                 newDivisors.append(divisor * multiple)
+
         for newDivisor in newDivisors:
             divisors.append(newDivisor)
 
@@ -82,8 +93,10 @@ def isSumOfAbundants(abundants, n):
     if n >= 24:
         for i in range(0, (n // 2) + 1):
             result = abundants[i] and abundants[n - i]
+
             if result:
                 break
+
     return result
 
 

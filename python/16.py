@@ -1,11 +1,13 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 
 def digitize(n):
     digits = []
+
     while n > 0:
         digits.append(n % 10)
         n //= 10
+
     return digits
 
 

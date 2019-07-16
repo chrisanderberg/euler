@@ -1,15 +1,18 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
+
+import os
 import string
 
 
 def fileNumsToList(filename):
     f = open(filename, 'r')
     contents = f.read()
-
     numstring = ''
     nums = []
+
     for i in range(0, len(contents)):
         char = contents[i]
+
         if char in string.digits:
             numstring += char
         elif numstring:
@@ -46,8 +49,9 @@ class Triangle:
             else:
                 self.totals[(row, col)] = self.getNum(
                     row, col) + self.maxTotal(row + 1, col + 1)
+
         return self.totals[(row, col)]
 
 
-triangle = Triangle(15, '18.txt')
+triangle = Triangle(15, os.path.dirname(os.path.abspath(__file__)) + '/18.txt')
 print(triangle.maxTotal(0, 0))

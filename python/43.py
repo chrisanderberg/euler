@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 
 class Status:
@@ -7,9 +7,11 @@ class Status:
 
 def digitsToNum(digits):
     num = 0
+
     for digit in digits:
         num *= 10
         num += digit
+
     return num
 
 
@@ -27,6 +29,7 @@ def permutator(determinedSymbols, remainingSymbols):
         s5 = digitsToNum(determinedSymbols[5:8])
         s6 = digitsToNum(determinedSymbols[6:9])
         s7 = digitsToNum(determinedSymbols[7:10])
+
         if s1 % 2 == 0 and s2 % 3 == 0 and s3 % 5 == 0 and s4 % 7 == 0 and s5 % 11 == 0 and s6 % 13 == 0 and s7 % 17 == 0:
             num = digitsToNum(determinedSymbols)
             Status.count += num

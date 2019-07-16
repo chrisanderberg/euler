@@ -1,4 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
+
+import os
 import string
 
 
@@ -20,6 +22,7 @@ class Word:
 
     def alphabeticalValue(self):
         val = 0
+
         for i in range(0, len(self.word)):
             val += self.letterValAtPosition(i)
 
@@ -28,33 +31,54 @@ class Word:
     def __cmp__(self, other):
         i = 0
         result = 0
-        while result == 0 and not (self.letterValAtPosition(i) == 0 and other.letterValAtPosition(i) == 0):
+
+        while (result == 0) and not (self.letterValAtPosition(i) == 0 and other.letterValAtPosition(i) == 0):
             if self.letterValAtPosition(i) > other.letterValAtPosition(i):
                 result = 1
+
             if self.letterValAtPosition(i) < other.letterValAtPosition(i):
                 result = -1
+
             i += 1
 
         return result
+
+    def __lt__(self, other):
+        return self.__cmp__(other) == -1
+
+    def __gt__(self, other):
+        return self.__cmp__(other) == 1
+
+    def __eq__(self, other):
+        return self.__cmp__(other) == 0
+
+    def __le__(self, other):
+        return self.__lt__(other) or self.__eq__(other)
+
+    def __ge__(self, other):
+        return self.__gt__(other) or self.__eq__(other)
 
     def isTriangle(self):
         val = self.alphabeticalValue()
         t = 0
         n = 1
+
         while t < val:
             t += n
             n += 1
+
         return t == val
 
 
 def fileWordsToList(filename):
     f = open(filename, 'r')
     contents = f.read()
-
     word = ''
     words = []
+
     for i in range(0, len(contents)):
         char = contents[i]
+
         if char in string.ascii_letters:
             word += char
         elif word:
@@ -67,8 +91,11 @@ def fileWordsToList(filename):
 
 
 count = 0
-words = fileWordsToList('words.txt')
+words = fileWordsToList(os.path.dirname(
+    os.path.abspath(__file__)) + '/words.txt')
+
 for word in words:
     if word.isTriangle():
         count += 1
+
 print(count)

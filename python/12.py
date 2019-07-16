@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 
 class Primes:
@@ -7,6 +7,7 @@ class Primes:
     @staticmethod
     def isPrime(n):
         lastPrime = Primes.primes[len(Primes.primes) - 1]
+
         while lastPrime * lastPrime <= n:
             Primes.appendNextPrime()
             lastPrime = Primes.primes[len(Primes.primes) - 1]
@@ -14,8 +15,9 @@ class Primes:
         i = 0
         curPrime = Primes.primes[i]
         isPrime = True
-        while isPrime and curPrime * curPrime <= n:
-            isPrime = n % curPrime != 0
+
+        while isPrime and (curPrime * curPrime <= n):
+            isPrime = (n % curPrime != 0)
             i += 1
             curPrime = Primes.primes[i]
 
@@ -25,8 +27,10 @@ class Primes:
     def appendNextPrime():
         size = len(Primes.primes)
         n = Primes.primes[size - 1] + 2
+
         while not Primes.isPrime(n):
             n += 2
+
         Primes.primes.append(n)
 
     @staticmethod
@@ -40,12 +44,15 @@ class Primes:
     def primeFactor(n):
         exponents = []
         i = 0
+
         while n > 1:
             prime = Primes.getPrime(i)
             exponent = 0
+
             while n % prime == 0:
                 exponent += 1
                 n //= prime
+
             exponents.append(exponent)
             i += 1
 
@@ -55,6 +62,7 @@ class Primes:
 def countDivisors(n):
     exponents = Primes.primeFactor(n)
     divisors = 1
+
     for exponent in exponents:
         divisors *= exponent + 1
 
@@ -66,10 +74,12 @@ def triangularNumber(n):
 
 
 n = 0
+
 while True:
     n += 1
     tn = triangularNumber(n)
     d = countDivisors(tn)
+
     if d > 500:
         break
 

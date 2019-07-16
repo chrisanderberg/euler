@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 
 class Coins:
@@ -15,9 +15,11 @@ class Coins:
                 return Coins.calculatedCombinations[i][amount]
             else:
                 combs = 0
+
                 while amount >= 0:
                     combs += Coins.combinations(amount, i - 1)
                     amount -= Coins.values[i]
+
                 Coins.calculatedCombinations[i][amount] = combs
                 return combs
 

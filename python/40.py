@@ -1,11 +1,13 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 
 def digitize(n):
     digits = []
+
     while n > 0:
         digits.append(n % 10)
         n //= 10
+
     digits.reverse()
     return digits
 
@@ -18,6 +20,7 @@ class Champernowne:
     def getDigit(i):
         while len(Champernowne.fractionalPart) < i:
             Champernowne.appendNextInt()
+
         return Champernowne.fractionalPart[i - 1]
 
     @staticmethod
@@ -28,6 +31,8 @@ class Champernowne:
 
 
 product = 1
+
 for i in [1, 10, 100, 1000, 10000, 100000, 1000000]:
     product *= Champernowne.getDigit(i)
+
 print(product)

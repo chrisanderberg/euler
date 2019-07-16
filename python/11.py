@@ -1,4 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
+
+import os
 import string
 
 
@@ -8,8 +10,10 @@ def fileNumsToList(filename):
 
     numstring = ''
     nums = []
+
     for i in range(0, len(contents)):
         char = contents[i]
+
         if char in string.digits:
             numstring += char
         elif numstring:
@@ -40,8 +44,10 @@ class Grid:
         for row in range(0, self.numRows):
             for col in range(0, self.numCols - size):
                 product = 1
+
                 for i in range(0, size):
                     product *= self.getNum(row, col + i)
+
                 if product > maxProduct:
                     maxProduct = product
 
@@ -49,8 +55,10 @@ class Grid:
         for row in range(0, self.numRows - size):
             for col in range(0, self.numCols):
                 product = 1
+
                 for i in range(0, size):
                     product *= self.getNum(row + i, col)
+
                 if product > maxProduct:
                     maxProduct = product
 
@@ -58,8 +66,10 @@ class Grid:
         for row in range(0, self.numRows - size):
             for col in range(0, self.numCols - size):
                 product = 1
+
                 for i in range(0, size):
                     product *= self.getNum(row + i, col + i)
+
                 if product > maxProduct:
                     maxProduct = product
 
@@ -67,13 +77,15 @@ class Grid:
         for row in range(size - 1, self.numRows):
             for col in range(0, self.numCols - size):
                 product = 1
+
                 for i in range(0, size):
                     product *= self.getNum(row - i, col + i)
+
                 if product > maxProduct:
                     maxProduct = product
 
         return maxProduct
 
 
-grid = Grid('11.txt', 20, 20)
+grid = Grid(os.path.dirname(os.path.abspath(__file__)) + '/11.txt', 20, 20)
 print(grid.maxProduct(4))

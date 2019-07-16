@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 
 class Primes:
@@ -8,7 +8,9 @@ class Primes:
     def isPrime(n):
         if n < 2:
             return False
+
         lastPrime = Primes.primes[len(Primes.primes) - 1]
+
         while lastPrime * lastPrime <= n:
             Primes.appendNextPrime()
             lastPrime = Primes.primes[len(Primes.primes) - 1]
@@ -16,6 +18,7 @@ class Primes:
         i = 0
         curPrime = Primes.primes[i]
         isPrime = True
+
         while isPrime and curPrime * curPrime <= n:
             isPrime = n % curPrime != 0
             i += 1
@@ -27,6 +30,7 @@ class Primes:
     def appendNextPrime():
         size = len(Primes.primes)
         n = Primes.primes[size - 1] + 2
+
         while not Primes.isPrime(n):
             n += 2
         Primes.primes.append(n)
@@ -42,12 +46,15 @@ class Primes:
     def primeFactor(n):
         exponents = []
         i = 0
+
         while n > 1:
             prime = Primes.getPrime(i)
             exponent = 0
+
             while n % prime == 0:
                 exponent += 1
                 n //= prime
+
             exponents.append(exponent)
             i += 1
 
@@ -56,16 +63,20 @@ class Primes:
 
 def countConsecutivePrimes(a, b):
     n = 0
+
     while Primes.isPrime((n * n) + (a * n) + b):
         n += 1
+
     return n
 
 
 prod = 0
 maxConsecutive = 0
+
 for a in range(-999, 1000):
     for b in range(-999, 1000):
         consecutive = countConsecutivePrimes(a, b)
+
         if consecutive > maxConsecutive:
             maxConsecutive = consecutive
             prod = a * b

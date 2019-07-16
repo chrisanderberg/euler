@@ -1,11 +1,13 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 
 def digitize(n, base):
     digits = []
+
     while n > 0:
         digits.append(n % base)
         n //= base
+
     digits.reverse()
     return digits
 
@@ -23,6 +25,7 @@ def isQualified(n):
 
 
 s = 0
+
 for i in range(1, 1000000):
     if isQualified(i):
         s += i
