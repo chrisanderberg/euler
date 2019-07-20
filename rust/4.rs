@@ -30,10 +30,13 @@ where
 
 fn main() {
     let mut largest: u64 = 0;
-    for a in 100..1000 { // each 3 digit num
-        for b in a..1000 { // each 3 digit num >= to the first
+    for a in 100..1000 {
+        // each 3 digit num
+        for b in a..1000 {
+            // each 3 digit num >= to the first
             let product = a * b;
-            if product > largest { // only check larger products
+            if product > largest {
+                // only check larger products
                 let digits = to_digits(product);
                 if is_palindrome(&digits[..]) {
                     largest = product; // found a larger palindrome
