@@ -6,7 +6,7 @@
 
 import "lib/prime_number_sieve.dart";
 
-// Given an integer n, find n's largest prime factor
+// Given an integer n, find n's largest prime factor.
 int largestPrimeFactor(int n) {
   var remainingProduct = n;
   var ps = primeNumberSieve();
@@ -25,7 +25,7 @@ int largestPrimeFactor(int n) {
   return curPrime;
 }
 
-// Print the solution to the problem
+// Print the solution to the problem.
 void main() {
   print(largestPrimeFactor(600851475143));
 }
