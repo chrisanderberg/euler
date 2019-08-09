@@ -7,3 +7,8 @@ c/*
 rust/*
 !rust/*.rs
 !rust/*.md
+
+java/*
+!java/*.java
+!java/*.md
+
