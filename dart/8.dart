@@ -63,17 +63,17 @@ List<int> numStrToList(String numStr) {
 int greatestAdjacentProduct(List<int> numArr, int length) {
   var maxProduct = 0;
 
-  // starting at each number with enough following numbers
-  // to multiply a full consecutive product of "length"
+  // Starting at each number with enough following numbers
+  // to multiply a full consecutive product of "length".
   for (var i = 0; i < numArr.length + 1 - length; i++) {
     var curProduct = 1;
 
-    // calculate the consecutive product
+    // Calculate the consecutive product.
     for (var j = 0; j < length; j++) {
       curProduct *= numArr[i + j];
     }
 
-    // update the max product if the new consecutive product is greater
+    // Update the max product if the new consecutive product is greater.
     if (curProduct > maxProduct) {
       maxProduct = curProduct;
     }

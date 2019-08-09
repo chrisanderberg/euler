@@ -18,9 +18,9 @@ List<int> digitize(int n) {
   return digits;
 }
 
-// Determine if a number is a palendrome
+// Determine if a number is a palendrome.
 bool isPalendrome(n) {
-  // Digitize the number
+  // Digitize the number.
   var digits = digitize(n);
 
   // Get the digits in reversed order.
@@ -41,14 +41,11 @@ void main() {
   // Start by assuming the largest found is 0.
   var largest = 0;
 
-  // For each 3 digit number
+  // For each 3 digit number.
   for (var i = 999; i > 99; i--) {
-    // for every other 3 digit number that produces
-    // a product with the first 3 digit number that's
-    // larger than the largest palendrome found...
     for (var j = 999; (j > 99) && (i * j > largest); j--) {
-      // check if the product is a palendrome,
-      // if so it's the new largest palendrome found
+      // Check if the product is a palendrome,
+      // if so it's the new largest palendrome found.
       if (isPalendrome(i * j)) {
         largest = i * j;
       }
