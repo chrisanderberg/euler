@@ -4,11 +4,14 @@ c/*
 !c/*.c
 !c/*.md
 
-rust/*
-!rust/*.rs
-!rust/*.md
+go/*
+!go/*.go
 
 java/*
 !java/*.java
 !java/*.md
+
+rust/*
+!rust/*.rs
+!rust/*.md
 
