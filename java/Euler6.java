@@ -13,16 +13,21 @@
 // Find the difference between the sum of the squares of the
 // first one hundred natural numbers and the square of the sum.
 
-void main() {
-  // Define "square", "sum", and "first100Nats".
-  final square = (int x) => x * x;
-  final sum = (int a, int b) => a + b;
-  final first100Nats = List<int>.generate(100, (i) => i + 1);
+class Euler6 {
+    static long sumOfSquares(int n) {
+        long sum = 0;
+        for(int i = 0; i <= n; i++) {
+            sum += i * i;
+        }
+        return sum;
+    }
 
-  // Do the math.
-  final sumOfSquares = first100Nats.map(square).reduce(sum);
-  final squareOfSum = square(first100Nats.reduce(sum));
-  final result = squareOfSum - sumOfSquares;
+    static long squareOfSum(int n) {
+        long sum = (n * (n + 1)) / 2;
+        return sum * sum;
+    }
 
-  print(result);
+    public static void main(String[] args) {
+        System.out.println(squareOfSum(100) - sumOfSquares(100));
+    }
 }
