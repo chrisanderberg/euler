@@ -1,36 +1,19 @@
 #!/usr/bin/env python3
 
-
-class Products:
-    products = set()
-
-
-def digitsToNum(digits):
-    num = 0
-
-    for digit in digits:
-        num *= 10
-        num += digit
-
-    return num
+import digits
 
 
 def splitter(determinedSymbols):
     for multiplicandLength in range(1, len(determinedSymbols) - 1):
         for multiplierLength in range(1, len(determinedSymbols) - multiplicandLength):
-            productLength = len(determinedSymbols) - \
-                multiplicandLength - multiplierLength
-
-            multiplicand = digitsToNum(determinedSymbols[:multiplicandLength])
-            multiplier = digitsToNum(
+            multiplicand = digits.digitsToNum(determinedSymbols[:multiplicandLength])
+            multiplier = digits.digitsToNum(
                 determinedSymbols[multiplicandLength:multiplicandLength + multiplierLength])
-
-            product = digitsToNum(
+            product = digits.digitsToNum(
                 determinedSymbols[multiplicandLength + multiplierLength:])
-
             if multiplicand * multiplier == product:
-                if product not in Products.products:
-                    Products.products.add(product)
+                if product not in products:
+                    products.add(product)
 
 
 def permutator(determinedSymbols, remainingSymbols):
@@ -44,10 +27,9 @@ def permutator(determinedSymbols, remainingSymbols):
         splitter(determinedSymbols)
 
 
+products = set()
 permutator([], [1, 2, 3, 4, 5, 6, 7, 8, 9])
 s = 0
-
-for product in Products.products:
+for product in products:
     s += product
-
 print(s)

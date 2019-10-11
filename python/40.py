@@ -1,38 +1,25 @@
 #!/usr/bin/env python3
 
+import digits
 
-def digitize(n):
-    digits = []
-
-    while n > 0:
-        digits.append(n % 10)
-        n //= 10
-
-    digits.reverse()
-    return digits
+fractionalPart = []
+nextInt = 1
 
 
-class Champernowne:
-    fractionalPart = []
-    nextInt = 1
+def getDigit(i):
+    while len(fractionalPart) < i:
+        appendNextInt()
+    return fractionalPart[i - 1]
 
-    @staticmethod
-    def getDigit(i):
-        while len(Champernowne.fractionalPart) < i:
-            Champernowne.appendNextInt()
 
-        return Champernowne.fractionalPart[i - 1]
-
-    @staticmethod
-    def appendNextInt():
-        digits = digitize(Champernowne.nextInt)
-        Champernowne.nextInt += 1
-        Champernowne.fractionalPart += digits
+def appendNextInt():
+    global nextInt, fractionalPart
+    ds = digits.digitize(nextInt)
+    nextInt += 1
+    fractionalPart += ds
 
 
 product = 1
-
 for i in [1, 10, 100, 1000, 10000, 100000, 1000000]:
-    product *= Champernowne.getDigit(i)
-
+    product *= getDigit(i)
 print(product)

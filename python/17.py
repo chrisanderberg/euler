@@ -60,7 +60,6 @@ def countLetters(n):
         letters = 14 + countLetters(n - 900)
     else:
         letters = 11
-
     return letters
 
 

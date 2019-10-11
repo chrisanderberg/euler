@@ -9,27 +9,6 @@ we can see that the 6th prime is 13.
 What is the 10 001st prime number?
 """
 
+import primes
 
-def isPrime(primes, n):
-    i = 0
-    curPrime = primes[i]
-    isPrime = True
-    while isPrime and (curPrime**2 <= n):
-        isPrime = (n % curPrime != 0)
-        i += 1
-        curPrime = primes[i]
-    return isPrime
-
-
-def appendNextPrime(primes):
-    size = len(primes)
-    n = primes[size-1] + 2
-    while not isPrime(primes, n):
-        n += 1
-    primes.append(n)
-
-
-primes = [2, 3]
-for i in range(0, 10000):
-    appendNextPrime(primes)
-print(primes[10000])
+print(primes.getPrime(10000))

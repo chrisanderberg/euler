@@ -9,10 +9,8 @@ def fileNumsToList(filename):
     contents = f.read()
     numstring = ''
     nums = []
-
     for i in range(0, len(contents)):
         char = contents[i]
-
         if char in string.digits:
             numstring += char
         elif numstring:
@@ -20,8 +18,11 @@ def fileNumsToList(filename):
             numstring = ''
         else:
             pass
-
     return nums
+
+
+def calcIndex(row, col):
+    return (row * row + row) // 2 + col
 
 
 class Triangle:
@@ -30,12 +31,8 @@ class Triangle:
         self.rows = rows
         self.totals = dict()
 
-    @staticmethod
-    def calcIndex(row, col):
-        return (row * row + row) // 2 + col
-
     def getNum(self, row, col):
-        return self.nums[Triangle.calcIndex(row, col)]
+        return self.nums[calcIndex(row, col)]
 
     def maxTotal(self, row, col):
         if (row, col) in self.totals:
@@ -49,7 +46,6 @@ class Triangle:
             else:
                 self.totals[(row, col)] = self.getNum(
                     row, col) + self.maxTotal(row + 1, col + 1)
-
         return self.totals[(row, col)]
 
 

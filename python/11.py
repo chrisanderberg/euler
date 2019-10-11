@@ -7,13 +7,10 @@ import string
 def fileNumsToList(filename):
     f = open(filename, 'r')
     contents = f.read()
-
     numstring = ''
     nums = []
-
     for i in range(0, len(contents)):
         char = contents[i]
-
         if char in string.digits:
             numstring += char
         elif numstring:
@@ -21,7 +18,6 @@ def fileNumsToList(filename):
             numstring = ''
         else:
             pass
-
     return nums
 
 
@@ -39,51 +35,38 @@ class Grid:
 
     def maxProduct(self, size):
         maxProduct = 0
-
         # check horizontal products
         for row in range(0, self.numRows):
             for col in range(0, self.numCols - size):
                 product = 1
-
                 for i in range(0, size):
                     product *= self.getNum(row, col + i)
-
                 if product > maxProduct:
                     maxProduct = product
-
         # check vertical products
         for row in range(0, self.numRows - size):
             for col in range(0, self.numCols):
                 product = 1
-
                 for i in range(0, size):
                     product *= self.getNum(row + i, col)
-
                 if product > maxProduct:
                     maxProduct = product
-
         # check downward diagonal products
         for row in range(0, self.numRows - size):
             for col in range(0, self.numCols - size):
                 product = 1
-
                 for i in range(0, size):
                     product *= self.getNum(row + i, col + i)
-
                 if product > maxProduct:
                     maxProduct = product
-
         # check upward diagonal products
         for row in range(size - 1, self.numRows):
             for col in range(0, self.numCols - size):
                 product = 1
-
                 for i in range(0, size):
                     product *= self.getNum(row - i, col + i)
-
                 if product > maxProduct:
                     maxProduct = product
-
         return maxProduct
 
 

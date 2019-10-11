@@ -1,14 +1,5 @@
 #!/usr/bin/env python3
 
+import digits
 
-def digitize(n):
-    digits = []
-
-    while n > 0:
-        digits.append(n % 10)
-        n //= 10
-
-    return digits
-
-
-print(sum(digitize(2 ** 1000)))
+print(sum(digits.digitize(2 ** 1000)))
