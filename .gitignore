@@ -3,15 +3,25 @@
 c/*
 !c/*.c
 !c/*.md
+!c/*.txt
 
 go/*
 !go/*.go
+!go/*.md
+!go/*.txt
 
 java/*
 !java/*.java
 !java/*.md
+!java/*.txt
+
+python/*
+!python/*.py
+!python/*.md
+!pyton/*.txt
 
 rust/*
 !rust/*.rs
 !rust/*.md
+!rust/*.txt
 
