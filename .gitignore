@@ -9,6 +9,7 @@ go/*
 !go/*.go
 !go/*.md
 !go/*.txt
+!go/primes
 
 java/*
 !java/*.java
